@@ -1,9 +1,10 @@
 const products = [
-    { id: 1, name: "Netflix Premium 1 DAY", price: 19, desc: "Netflix แท้จอไม่ชน 100%" },
-    { id: 2, name: "Netflix Premium 3 DAY", price: 39, desc: "Netflix แท้จอไม่ชน 100%" },
-    { id: 3, name: "Netflix Premium 7 DAY", price: 59, desc: "Netflix แท้จอไม่ชน 100%" },
-    { id: 4, name: "Netflix Premium 15 DAY", price: 109, desc: "Netflix แท้จอไม่ชน 100%" },
-    { id: 5, name: "Netflix Premium 30 DAY", price: 159, desc: "Netflix แท้จอไม่ชน 100%" },
+    { id: 1, name: "Netflix Premium 1 DAY", price: 19, desc: "Netflix แท้จอไม่ชน 100%", image: "netflix.png" },
+    { id: 2, name: "Netflix Premium 3 DAY", price: 39, desc: "Netflix แท้จอไม่ชน 100%", image: "netflix.png" },
+    { id: 3, name: "Netflix Premium 7 DAY", price: 59, desc: "Netflix แท้จอไม่ชน 100%", image: "netflix.png" },
+    { id: 4, name: "Netflix Premium 15 DAY", price: 109, desc: "Netflix แท้จอไม่ชน 100%", image: "netflix.png" },
+    { id: 5, name: "Netflix Premium 30 DAY", price: 159, desc: "Netflix แท้จอไม่ชน 100%", image: "netflix.png" },
+    { id: 6, name: "YouTube Premium 30 DAY", price: 99, desc: "YouTube Premium แท้100%", image: "youtube.png" },
 ];
 
 const state = {
@@ -39,8 +40,11 @@ function renderProducts() {
                     <h4>${product.name}</h4>
                     <p>${product.desc}</p>
                 </div>
+                <div class="product-image-wrap">
+                    <img src="${product.image}" alt="${product.name}" class="product-image" />
+                </div>
                 <div>
-                    <div class="price">฿${product.price}</div>
+                    <div class="price">฿${product.price} ฿</div>
                     <button class="button button-primary full-width" data-id="${product.id}">
                         <i class="fas fa-plus"></i> เพิ่มเข้าตะกร้า
                     </button>
@@ -214,7 +218,7 @@ function generateQRCode() {
                 text: qrText,
                 width: 200,
                 height: 200,
-                colorDark : "#004e92",
+                colorDark : "#000000",
                 colorLight : "#ffffff",
                 correctLevel : QRCode.CorrectLevel.H
             });
