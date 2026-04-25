@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JokeMoo Store | บริการขาย NETFLIX PREMIUM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="icon" type="image" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="topbar">
+        <div class="brand">
+            <div class="logo-circle">J</div>
+            <div>
+                <h1>JokeMoo Store</h1>
+                <p>บริการเช่าไอดีราคาประหยัด ปลอดภัย 100%</p>
+            </div>
+        </div>
+        <div class="actions">
+            <div id="userBadge" class="user-badge hidden"></div>
+            <button id="cartBtn" class="button button-primary">
+                <i class="fas fa-shopping-cart"></i> ตะกร้า <span id="cartCount">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <span class="eyebrow">Premium Service</span>
+                <h2>ดูหนัง ไม่ต้องรอคิวนาน</h2>
+                <p>รับรหัสผ่านทันทีหลังชำระเงิน รวดเร็ว ปลอดภัย มั่นใจได้ในคุณภาพ</p>
+                <button id="heroShopBtn" class="button button-primary btn-lg">
+                    เลือกแพ็กเกจเลย <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="hero-card">
+                <div class="feature-card"><i class="fas fa-bolt"></i> รับรหัสไวใน 1 นาที</div>
+                <div class="feature-card"><i class="fas fa-shield-alt"></i> การันตีตลอดอายุการใช้งาน</div>
+                <div class="feature-card"><i class="fas fa-headset"></i> ดูแลโดยแอดมิน 24 ชม.</div>
+            </div>
+        </section>
+
+        <section class="products">
+            <h3><i class="fas fa-tags"></i> แพ็คเกจยอดนิยม</h3>
+            <div id="products" class="product-grid"></div>
+        </section>
+
+        <!-- 🔽 เพิ่มส่วน FAQ ตรงนี้ 🔽 -->
+        <section id="faq" class="faq-section">
+            <div class="faq-header">
+                <h3><i class="fas fa-question-circle"></i> คำถามที่พบบ่อย (FAQ)</h3>
+                <p>รวมข้อสงสัยที่ลูกค้ามักถาม เพื่อความรวดเร็วในการสั่งซื้อ</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>1. รับรหัสผ่านอย่างไรหลังชำระเงิน?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>หลังยืนยันการโอนสำเร็จ เพิ่มเพื่อน Line <strong>@106zyrpm</strong> เพื่อแจ้งสลิปโอน แอดมินจะตรวจสอบและส่งรหัสผ่านให้ภายใน 1-5 นาที</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>2. ไอดี Netflix เป็นของแท้หรือไม่?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>ใช่ครับ ทุกไอดีเป็นบัญชีพรีเมียมแท้ 100% ซื้อตรงจากผู้ให้บริการอย่างเป็นทางการ มั่นใจได้ในความเสถียรและคุณภาพระดับ Ultra HD</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>3. หากไอดีมีปัญหา หรือดูไม่ได้ สามารถเคลมได้หรือไม่?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>ได้ครับ เราการันตีการใช้งานตลอดอายุแพ็กเกจ หากพบปัญหาเข้าไม่ได้ หรือรหัสเปลี่ยน สามารถแจ้งแอดมินได้ทันที โดยไม่มีค่าใช้จ่ายเพิ่มแน่นอนค้าบ</p>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 🔼 จบส่วน FAQ 🔼 -->
+    </main>
+
+    <!-- Cart Modal -->
+    <div id="cartPanel" class="overlay hidden">
+        <div class="modal-container cart-modal">
+            <div class="cart-header">
+                <h3><i class="fas fa-shopping-bag"></i> ตะกร้าสินค้าของคุณ</h3>
+                <button id="closeCart" class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="cartItems"></div>
+            <div class="cart-summary">
+                <span>ยอดรวมทั้งหมด</span>
+                <span id="cartTotal" class="total-price">฿0</span>
+            </div>
+            <button id="checkoutBtn" class="button button-primary full-width">
+                ดำเนินการชำระเงิน <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutPanel" class="overlay hidden">
+        <div class="modal-container checkout-modal">
+            <div class="cart-header">
+                <h3><i class="fas fa-qrcode"></i> ชำระเงิน</h3>
+                <button id="closeCheckout" class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="checkout-body">
+                <div class="qr-card">
+                    <p class="qr-text">สแกนเพื่อโอนเงิน (พร้อมเพย์)</p>
+                    <div id="qrcode"></div>
+                    <div class="amount-display">ยอดชำระ: <span id="qrAmount" class="highlight">฿0</span></div>
+                    <p class="small-text">พร้อมเพย์: 0960200859 / ชื่อบัญชี: ธีรภัทร์ ธีระธนากร</p>
+                </div>
+                <button id="confirmPaymentBtn" class="button button-primary full-width">
+                    <i class="fas fa-check-circle"></i> โอนเงินเรียบร้อยแล้ว
+                </button>
+                <div id="confirmMessage" class="confirmation hidden">
+                    <i class="fas fa-check-double"></i>
+                    <strong>รับคำขอสำเร็จ!</strong>
+                    <p>กรุณาแอด Line เพื่อรับรหัสผ่าน: <span class="line-id">@106zyrpm</span> [สามารถแจ้งสลิปกับแอดมินได้เลย]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <footer>
+        <p>&copy; 2026 Netflix ID Store. All rights reserved.</p>
+    </footer>
+
+    <a href="https://line.me/R/ti/p/%40106zyrpm" class="contact-admin-button" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-line"></i>
+        ติดต่อแอดมิน
+    </a>
+    <div id="toast" class="toast"></div>
+    <script src="script.js"></script>
+</body>
+</html>
